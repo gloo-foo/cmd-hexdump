@@ -53,14 +53,11 @@ func formatCanonical(data []byte) string {
 // hexField renders the fixed-width 16-column hex field with a midpoint gap,
 // padding absent bytes with spaces so the ASCII sidebar always aligns.
 func hexField(data []byte) string {
-	var b strings.Builder
+	cells := make([]string, bytesPerLine)
 	for i := range bytesPerLine {
-		if i == midpoint {
-			b.WriteByte(' ')
-		}
-		b.WriteString(hexCell(data, i))
+		cells[i] = hexCell(data, i)
 	}
-	return b.String()
+	return strings.Join(cells[:midpoint], "") + " " + strings.Join(cells[midpoint:], "")
 }
 
 // hexCell renders one column: the byte as "%02x " or three spaces when absent.
@@ -73,11 +70,11 @@ func hexCell(data []byte, i int) string {
 
 // asciiField renders the ASCII sidebar: printable bytes verbatim, others as '.'.
 func asciiField(data []byte) string {
-	var b strings.Builder
-	for _, c := range data {
-		b.WriteByte(printable(c))
+	glyphs := make([]byte, len(data))
+	for i, c := range data {
+		glyphs[i] = printable(c)
 	}
-	return b.String()
+	return string(glyphs)
 }
 
 // printable maps a byte to its sidebar glyph: itself if printable, else '.'.

@@ -4,8 +4,9 @@ import (
 	"slices"
 	"testing"
 
-	hexdump "github.com/gloo-foo/cmd-hexdump/alias"
 	"github.com/gloo-foo/testable"
+
+	hexdump "github.com/gloo-foo/cmd-hexdump/alias"
 )
 
 // The alias package re-exports the constructor and flag constants under

@@ -3,8 +3,9 @@ package hexdump_test
 import (
 	"fmt"
 
-	command "github.com/gloo-foo/cmd-hexdump"
 	"github.com/gloo-foo/testable"
+
+	command "github.com/gloo-foo/cmd-hexdump"
 )
 
 func ExampleHexdump_basic() {

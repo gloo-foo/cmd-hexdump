@@ -5,9 +5,10 @@ import (
 	"strings"
 	"testing"
 
-	command "github.com/gloo-foo/cmd-hexdump"
 	gloo "github.com/gloo-foo/framework"
 	"github.com/gloo-foo/testable"
+
+	command "github.com/gloo-foo/cmd-hexdump"
 )
 
 // dump runs the command over input and returns the rendered lines, failing the
